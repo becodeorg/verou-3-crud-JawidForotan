@@ -15,8 +15,20 @@ class CardRepository
 
     public function create(): void
     {
-
-    }
+        
+            if(!empty($_POST["brand"]) && (!empty($_POST["model"]) && (!empty($_POST["color"])) &&(!empty($_POST["price"])))){
+                 $brand = $_POST["brand"];
+                 $model = $_POST["model"];
+                 $color = $_POST["color"];
+                 $price = $_POST["price"];
+                if(isset($_POST["submit"])){
+                $sql = "INSERT INTO `car`(brand, model, color, price)
+                VALUES('$brand', '$model', '$color', '$price')";
+                $statement = $this->databaseManager->connection->prepare($sql);
+                $statement->execute();
+            }
+        }
+    }   
 
     // Get one
     // public function find(): array

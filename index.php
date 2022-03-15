@@ -12,11 +12,14 @@ error_reporting(E_ALL);
 require_once './config.php';
 require_once './classes/DatabaseManager.php';
 require_once './classes/CardRepository.php';
-
+require_once './classes/overview.php';
 
 
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
+
+$card = new CardRepository($databaseManager);
+$card->create();
 
 // This example is about a Pokémon card collection
 // Update the naming if you'd like to work with another collection
