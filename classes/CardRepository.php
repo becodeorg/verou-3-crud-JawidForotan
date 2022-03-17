@@ -1,13 +1,8 @@
 <?php
-
-// This class is focussed on dealing with queries for one type of data
-// That allows for easier re-using and it's rather easy to find all your queries
-// This technique is called the repository pattern
 class CardRepository
 {
     private DatabaseManager $databaseManager;
 
-    // This class needs a database connection to function
     public function __construct(DatabaseManager $databaseManager)
     {
         $this->databaseManager = $databaseManager;
@@ -15,13 +10,13 @@ class CardRepository
 
     public function create(): void
     {
-        
-            if(!empty($_POST["brand"]) && (!empty($_POST["model"]) && (!empty($_POST["color"])) &&(!empty($_POST["price"])))){
-                 $brand = $_POST["brand"];
-                 $model = $_POST["model"];
-                 $color = $_POST["color"];
-                 $price = $_POST["price"];
-                if(isset($_POST["submit"])){
+           
+            if(!empty($_GET["brand"]) && (!empty($_GET["model"]) && (!empty($_GET["color"])) &&(!empty($_GET["price"])))){
+                 $brand = $_GET["brand"];
+                 $model = $_GET["model"];
+                 $color = $_GET["color"];
+                 $price = $_GET["price"];
+                if(isset($_GET["submit"])){
                 $sql = "INSERT INTO `car`(brand, model, color, price)
                 VALUES('$brand', '$model', '$color', '$price')";
                 $statement = $this->databaseManager->connection->prepare($sql);
@@ -30,23 +25,20 @@ class CardRepository
         }
     }   
 
-    // Get one
-    // public function find(): array
+    //Get one
+    // public function find($id): array
     // {
-        
+    //     $query = "SELECT * FROM car WHERE :id = $id";
     // }
 
     // Get all
-    public function get(): array
+    public function get()
     {
-        // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
-
-        // We get the database connection first, so we can apply our queries with it
-        // return $this->databaseManager->connection-> (runYourQueryHere)
+        $sql = "SELECT * FROM car";
+        $connection = $this->databaseManager->connection->prepare($sql);
+        $connection->execute();
+        $elements = $connection->fetchAll();
+        return $elements;
     }
 
     public function update(): void
@@ -54,9 +46,10 @@ class CardRepository
 
     }
 
-    public function delete(): void
+    public function delete(int $id): void
     {
-
+       $sql = "DELETE FROM car WHERE id = :id";
+       $connection = $this->databaseManager->connection->prepare($sql);
+       $connection->execute([":id" => $id]);
     }
-
 }

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -9,7 +8,10 @@
   </head>
   <body>
       <div class="container my-5">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" class="my-5">
+          <div class="form-group my-3  mx-5 my-3">
+                    <button name="home" class="btn btn-primary"><a href="views/read.php" class="text-light text-decoration-none">Home</a></button>
+           </div> 
+        <form action="create" method="GET" class="my-5">
                 <h1 class="mx-5" >Add new car to the collection</h1>
                 <hr class="mx-5 mb-5">
                 <div class="form-group mx-5 my-3">
@@ -28,7 +30,7 @@
                     <label class="form-label">Price:</label>
                     <input type="number" class="form-control" name="price" placeholder="price">
                 </div>
-                <div class="form-group my-3  mx-5 my-3">
+                <div class="form-group my-3 mx-5 my-3">
                     <button name="submit" class="btn btn-primary">Add new car</button>
                 </div>      
         </form>
