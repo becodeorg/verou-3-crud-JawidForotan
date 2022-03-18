@@ -1,8 +1,7 @@
 <?php
-
+require"config.php";
 class DatabaseManager
 {
- 
     private string $host;
     private string $user;
     private string $password;

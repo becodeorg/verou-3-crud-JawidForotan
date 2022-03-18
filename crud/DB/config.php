@@ -3,6 +3,6 @@ $config = [
     'host' => 'localhost',
     'user' => 'root',
     'password' => '',
-    'dbname' => 'cardatabase',
+    'dbname' => 'crud',
 ];
 ?>
