@@ -8,7 +8,8 @@ class CardRepository
     {
         $this->databaseManager = $databaseManager;
     }
-
+    
+    // Create
     public function create(): void
     {
         if(!empty($_POST["brand"]) && (!empty($_POST["model"]))){
@@ -38,19 +39,20 @@ class CardRepository
         $elements = $statement->fetchAll();
         return $elements;    
     }
-
+    
+    // Update
     public function update($id): void
     {
         if(isset($_POST['update'])){
             $brand = $_POST['brand'];
             $model = $_POST['model'];
-            $sql = "UPDATE `car` SET `id` = '$id' brand = '$brand', model = '$model' WHERE `car`.`id` = '$id' ";
-            var_dump($sql);
+            $sql = "UPDATE `car` SET `id` = '$id', brand = '$brand', model = '$model' WHERE `car`.`id` = '$id' ";
             $statement = $this->databaseManager->connection->prepare($sql);
             $statement->execute();
         }
     }
-
+    
+    // Delete
     public function delete(): void
     {
         $sql ="DELETE FROM `car` WHERE (`id` = '{$_GET['id']}')";

@@ -19,7 +19,7 @@ $databaseManager->connect();
 
 
 $cardRepository = new CardRepository($databaseManager);
-//$card = $cardRepository->get();
+$card = $cardRepository->get();
 
 
 $action = $_GET['action'] ?? null;
@@ -30,16 +30,17 @@ switch ($action) {
         break;
     case 'update':
         update($cardRepository);
+
         break;
     case 'delete':
         delete($cardRepository);
         break;    
     default:
-        read($cardRepository);
+        read($card);
         break;
 }
 
-function read($cardRepository)
+function read($card)
 {
     require './View/read.php';
 }
@@ -57,7 +58,7 @@ function create($cardRepository)
 function update($cardRepository){
     if(!empty($_POST)){
         $cardRepository->update($_GET['id']);
-        //header("Location: index.php"); 
+        header("Location: index.php"); 
     }
     require_once "./View/update.php";
 }
