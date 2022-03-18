@@ -39,12 +39,13 @@ class CardRepository
         return $elements;    
     }
 
-    public function update(): void
+    public function update($id): void
     {
         if(isset($_POST['update'])){
             $brand = $_POST['brand'];
             $model = $_POST['model'];
-            $sql = "UPDATE `car` SET brand = '$brand', model = '$model' WHERE (`id` = '{$_GET['id']}')";
+            $sql = "UPDATE `car` SET `id` = '$id' brand = '$brand', model = '$model' WHERE `car`.`id` = '$id' ";
+            var_dump($sql);
             $statement = $this->databaseManager->connection->prepare($sql);
             $statement->execute();
         }

@@ -11,7 +11,7 @@
         <div class="form-group my-3">
             <button name="home" class="btn btn-primary"><a href="../index.php" class="text-light text-decoration-none">Home</a></button>
         </div> 
-        <form action="../index.php" method="POST" class="my-5">
+        <form action="../index.php?id=<?php $_GET['id']?>" method="POST" class="my-5">
                 <hr class="mb-5">
                 <div class="form-group my-3">
                     <label class="form-label fw-bold">Brand:</label>

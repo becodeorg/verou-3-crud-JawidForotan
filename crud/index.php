@@ -56,8 +56,8 @@ function create($cardRepository)
 
 function update($cardRepository){
     if(!empty($_POST)){
-        header("Location: index.php");
-        $cardRepository->update();
+        $cardRepository->update($_GET['id']);
+        //header("Location: index.php"); 
     }
     require_once "./View/update.php";
 }

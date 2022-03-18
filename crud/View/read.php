@@ -33,7 +33,7 @@
                         <td>'.$brand.'</td>
                         <td>'.$model.'</td>               
                         <td><button class="btn btn-danger"><a href="./index.php?action=delete&id='.$id.'" class="text-light text-decoration-none">Delete</a></button></td>
-                        <td><button class="btn btn-primary"><a href="View/update.php?=update&id'.$id.'" class="text-light text-decoration-none">Update</a></button></td>
+                        <td><button class="btn btn-primary"><a href="View/update.php?=update&id='.$id.'" class="text-light text-decoration-none">Update</a></button></td>
                         </tr>
                     </tbody>';
                     }
