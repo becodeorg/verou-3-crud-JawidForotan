@@ -6,14 +6,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"  integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
-    <body>
+    <body class="bg-info">
             <div class="container my-5">
                 <div class="d-flex justify-content-start my-4">
                 <button class="btn btn-primary me-5"><a href="View/create.php?action=create" class="text-light text-decoration-none">Add Car</a></button>
                 <h1>Car collection</h1>
                 </div>
-                <table class="table">
-                    <thead>
+                <table class="table table-secondary">
+                    <thead class="table-dark">
                         <tr>
                             <th>Id</th>
                             <th>Brand</th>

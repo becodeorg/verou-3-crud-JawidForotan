@@ -22,7 +22,6 @@ class DatabaseManager
         $dsn = "mysql:host={$this->host}; dbname={$this->dbname}";
         try{
             $this->connection = new PDO($dsn, $this->user, $this->password);
-        
         }catch(PDOException $error){
             $errorMassage = "Database error";
             $errorMassage .= $error->getMessage();
