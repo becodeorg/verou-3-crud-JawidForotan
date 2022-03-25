@@ -13,14 +13,11 @@ require_once './DB/config.php';
 require_once './DB/database.php';
 require_once './Model/card.php';
 
-
 $databaseManager = new DatabaseManager($config['host'], $config['user'], $config['password'], $config['dbname']);
 $databaseManager->connect();
 
-
 $cardRepository = new CardRepository($databaseManager);
 $card = $cardRepository->get();
-
 
 $action = $_GET['action'] ?? null;
 
@@ -30,17 +27,16 @@ switch ($action) {
         break;
     case 'update':
         update($cardRepository);
-
         break;
     case 'delete':
         delete($cardRepository);
         break;    
     default:
-        read($card);
+        getAll($card);
         break;
 }
 
-function read($card)
+function getAll($card)
 {
     require './View/read.php';
 }
@@ -52,7 +48,6 @@ function create($cardRepository)
         $cardRepository->create();
     }
     require_once "./View/create.php";
-    
 }
 
 function update($cardRepository){
@@ -60,6 +55,7 @@ function update($cardRepository){
         $cardRepository->update($_GET['id']);
         header("Location: index.php"); 
     }
+    $y =  $cardRepository->update($_GET['id']);
     require_once "./View/update.php";
 }
 

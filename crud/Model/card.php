@@ -25,9 +25,13 @@ class CardRepository
     }
 
     // Get one
-    public function find()//: array
+    public function find($id): array
     {
-
+        $sql = "SELECT * FROM `car` WHERE `id` = '$id'";
+        $statement = $this->databaseManager->connection->prepare($sql);
+        $statement->execute();
+        $element = $statement->fetch();
+        return $element;
     }
 
     // Get all
@@ -43,12 +47,13 @@ class CardRepository
     // Update
     public function update($id): void
     {
-        if(isset($_POST['update'])){
-            $brand = $_POST['brand'];
+        $x = $this->find($id);
+        if(isset($_POST['update'])){ 
+            $brand = $_POST['brand']; 
             $model = $_POST['model'];
-            $sql = "UPDATE `car` SET `id` = '$id', brand = '$brand', model = '$model' WHERE `car`.`id` = '$id' ";
-            $statement = $this->databaseManager->connection->prepare($sql);
-            $statement->execute();
+            $updateSql = "UPDATE `car` SET `id` = '$id', brand = '$brand', model = '$model' WHERE `car`.`id` = '$id' ";
+            $updateStatement = $this->databaseManager->connection->prepare($updateSql);
+            $updateStatement->execute();
         }
     }
     

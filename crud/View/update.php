@@ -11,19 +11,18 @@
         <div class="form-group my-3">
             <button name="home" class="btn btn-primary"><a href="./index.php" class="text-light text-decoration-none">Home</a></button>
         </div> 
-        <form action="" method="POST" class="my-5">
-                <hr class="mb-5">
-                <div class="form-group my-3">
-                    <label class="form-label fw-bold">Brand:</label>
-                    <input type="text" class="form-control" name="brand" placeholder="brand">
-                </div>
-                <div class="form-group my-3">
-                    <label class="form-label fw-bold">Model:</label>
-                    <input type="text" class="form-control" name="model" placeholder="model">
-                </div>
-                <div class="form-group my-3 ">
-                    <button name="update" class="btn btn-primary">Update</button>
-                </div>      
+        <form action="" method="POST" class="my-5 bg-secondary p-3">
+            <div class="form-group my-3">
+                <label class="form-label fw-bold">Brand:</label>
+                <input type="text" class="form-control" name="brand" placeholder="brand">
+            </div>
+            <div class="form-group my-3">
+                <label class="form-label fw-bold">Model:</label>
+                <input type="text" class="form-control" name="model" placeholder="model">
+            </div>
+            <div class="form-group my-3 ">
+                <button name="update" class="btn btn-primary">Update</button>
+            </div>      
         </form>
     </div>
 </body>
